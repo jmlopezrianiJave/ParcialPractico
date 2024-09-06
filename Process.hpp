@@ -9,7 +9,7 @@ class Process{
         Process(int processID_i, int arrivalTime_i, int burstTime_i, int priority_i);
         //Getters
         int getProcessID();
-        int getArrivalTime();
+        int getArrivalTime() const;
         int getBurstTime();
         int getPriority();
         int getStartTime();
@@ -17,6 +17,7 @@ class Process{
         int getWaitTime();
         int getResponseTime();
         int getTurnAroundTime();
+        int getLastRun();
         //Setters
         void setProcessID(int id);
         void setArrivalTime(int time);
@@ -27,6 +28,7 @@ class Process{
         void setWaitTime(int time);
         void setResponseTime(int time);
         void setTurnAroundTime(int time);
+        void setLastRun(int time);
         
 
     private:
@@ -35,9 +37,9 @@ class Process{
         int arrivalTime;
         int burstTime;
         int priority;
+        int lastRun;//int to keep track of time waiting
 
         //Tickers for stats after excecuting
-        int startTime;
         int completionTime;
         int waitTime;
         int responseTime;

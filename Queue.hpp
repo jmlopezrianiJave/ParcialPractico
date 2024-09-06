@@ -8,18 +8,26 @@ using namespace std;
 class Queue{
     protected:
     vector<Process> processes;
+    int* currentTime;
+    int i;
+    bool exec;
 
     public:
     //contructores
-    Queue();
-    Queue(vector<Process>& i_processes) : processes( i_processes ){};
-
+    Queue(){
+        i = 0;
+    };
+    Queue(vector<Process>& i_processes, int* i_currentTime) : processes( i_processes ), currentTime( i_currentTime ){
+        i = 0;
+    };
+    bool isEmpty(){ 
+        return i >= processes.size();
+    };
     //method defined by subclasses
     virtual void schedule() = 0;
-
-    //destructor
-    virtual ~Queue();
-
+    virtual void waitIn() = 0;
+    virtual void waitOut() = 0;
+    virtual void tat() = 0;
 };
 
 #endif //QUEUE_H

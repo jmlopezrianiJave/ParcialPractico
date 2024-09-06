@@ -1,14 +1,18 @@
-#ifndef FCFS_H
-#define FCFS_H
-
+#ifndef FCFS_HPP
+#define FCFS_HPP   
+#include <algorithm>
 #include "Queue.hpp"
 
-class FCFS : public Queue {
-    public:
-        FCFS();
-        FCFS(vector<Process>& i_processes) : Queue( i_processes ){};
 
-        void schedule() override;
+class FCFS : public Queue{
+    public:
+    FCFS();
+    FCFS(vector<Process>& p, int* curr);
+    void schedule() override;
+    void waitIn() override;
+    void waitOut() override;
+    void tat() override;
+    void printQ();
 };
 
-#endif FCFS_H
+#endif //FCFS_HPP

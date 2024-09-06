@@ -1,17 +1,17 @@
 #include "Process.hpp"
 
 Process::Process(){
-    startTime = -1;
     completionTime = 0;
     waitTime = 0;
-    responseTime = 0;
+    responseTime = -1;
+    turnAroundTime = 0;
 }
 
 Process::Process(int processID_i, int arrivalTime_i, int burstTime_i, int priority_i) : processID(processID_i), arrivalTime(arrivalTime_i), burstTime(burstTime_i), priority(priority_i){
-    startTime = -1;
     completionTime = 0;
     waitTime = 0;
-    responseTime = 0;
+    responseTime = -1;
+    turnAroundTime = 0;
 }
 
 //Getters
@@ -19,7 +19,7 @@ int Process::getProcessID(){
     return this->processID;
 }
 
-int Process::getArrivalTime(){
+int Process::getArrivalTime() const {
     return this->arrivalTime;
 }
 
@@ -29,10 +29,6 @@ int Process::getBurstTime(){
 
 int Process::getPriority(){
     return this->priority;
-}
-
-int Process::getStartTime()  {
-    return this->startTime;
 }
 
 int Process::getCompletionTime()  {
@@ -49,6 +45,10 @@ int Process::getTurnAroundTime()  {
 
 int Process::getResponseTime()  {
     return this->responseTime;
+}
+
+int Process::getLastRun()  {
+    return this->lastRun;
 }
 
 //Setters
@@ -68,10 +68,6 @@ void Process::setPriority(int prio){
     this->priority = prio;
 }
 
-void Process::setStartTime(int time){
-    this->startTime = time;
-}
-
 void Process::setCompletionTime(int time){
     this->completionTime = time;
 }
@@ -86,4 +82,8 @@ void Process::setResponseTime(int time){
 
 void Process::setTurnAroundTime(int time){
     this->turnAroundTime = time;
+}
+
+void Process::setLastRun(int time){
+    this->lastRun = time;
 }

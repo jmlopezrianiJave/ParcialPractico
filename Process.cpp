@@ -1,14 +1,14 @@
 #include "Process.hpp"
 
 Process::Process(){
-    completionTime = 0;
+    completionTime = -1;
     waitTime = 0;
     responseTime = -1;
     turnAroundTime = 0;
 }
 
 Process::Process(int processID_i, int arrivalTime_i, int burstTime_i, int priority_i) : processID(processID_i), arrivalTime(arrivalTime_i), burstTime(burstTime_i), priority(priority_i){
-    completionTime = 0;
+    completionTime = -1;
     waitTime = 0;
     responseTime = -1;
     turnAroundTime = 0;

@@ -49,3 +49,11 @@ void FCFS::printQ(){
     }
     cout << "\n\n" << endl;
 }
+
+bool FCFS::isEmpty(){
+    return i >= processes.size();
+}
+
+int FCFS::getAt(){
+    return processes[i].getArrivalTime();
+}

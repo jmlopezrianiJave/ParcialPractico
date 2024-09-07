@@ -11,8 +11,10 @@ class FCFS : public Queue{
     void schedule() override;
     void waitIn() override;
     void waitOut() override;
+    bool isEmpty() override;
     void tat() override;
-    void printQ();
+    void printQ() override;
+    int getAt() override;
 };
 
 #endif //FCFS_HPP

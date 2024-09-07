@@ -2,15 +2,16 @@
 #define MLQ_HPP
 
 #include "Queue.hpp"
-#include <map>
 
 class MLQ{
     public:
-
+        MLQ();
+        MLQ(vector<Queue*>& colas, int* curr);
+        void schedule();
     private:
-    vector<Queue> queues;
-    //Stores shceduling algorithm used by each queue. The second value corresponds to quantum if 
-    map<int, int> types;
+        vector<Queue*> queues;
+        int* currentTime;
+        bool isEmpty();
 };
 
 #endif //MLQ_HPP

@@ -13,7 +13,7 @@ vector<Process> p;
 int currentTime = 0;
 
 void readFile(){
-    ifstream file("prueba.txt");
+    ifstream file("prueba2.txt");
     string type, qType;
     int nq, np, quantum;
     Queue* temp;
@@ -74,9 +74,7 @@ void readFile(){
 
 int main(){
     readFile();
-    // MLQ test = MLQ(q, &currentTime);
-    // q.clear();
-    // p.clear();
-    MLFQ test1 = MLFQ(q, p, &currentTime);
-    test1.schedule();
+    MLQ test = MLQ(q, &currentTime);
+    // MLFQ test = MLFQ(q, p, &currentTime);
+    test.schedule();
 }

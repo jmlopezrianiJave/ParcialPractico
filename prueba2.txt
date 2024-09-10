@@ -1,4 +1,4 @@
-MLFQ
+MLQ
 3
 
 FCFS 3

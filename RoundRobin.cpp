@@ -126,13 +126,10 @@ void RoundRobin::addProcess(Process p){
     processes.push_back(p);
     rrQueue.push(processes.size() - 1);
 }
-void RoundRobin::deleteProcess(){
-    processes.erase(processes.begin() + i);
-    queue<int>temp;
-    for(int j = 0; j < processes.size(); j++) {
-            temp.push(j);
-    }
-    rrQueue = temp;
+void RoundRobin::deleteProcess() {
+    rrQueue.pop();
+    spent = 0;
+    spentQ = 0;
 }
 
 bool RoundRobin::getType(){

@@ -6,6 +6,7 @@ FCFS::FCFS(vector<Process>& p, int* curr) : Queue(p, curr){
         return a.getArrivalTime() < b.getArrivalTime();
     });
 }
+FCFS::FCFS(int* curr) : Queue(curr){}
 
 void FCFS::waitIn(){
     for(int j = 0; j < processes.size(); j++){
@@ -44,9 +45,30 @@ void FCFS::tat(){
 }
 
 void FCFS::printQ(){
+    cout << "First Come First Serve" << endl;
     for(Process& p : processes){
-        cout << p.getProcessID() <<".CT: "<<p.getCompletionTime()<< ", WT: " << p.getWaitTime() << ", RT: " << p.getResponseTime() << ", TAT: " << p.getTurnAroundTime() << endl;
+        cout << p.getProcessID() <<".CT: "
+            << p.getCompletionTime()<< ", WT: " 
+            << p.getWaitTime() << ", RT: " 
+            << p.getResponseTime() << ", TAT: " 
+            << p.getTurnAroundTime() << endl;
     }
+    float avgCT = 0.0, avgWT = 0.0, avgRT = 0.0, avgTAT = 0.0;
+    for (Process& p : processes){
+        avgCT += p.getCompletionTime();
+        avgWT += p.getWaitTime();
+        avgRT += p.getResponseTime();
+        avgTAT += p.getTurnAroundTime();
+    }
+    cout << endl;
+    avgCT = avgCT / processes.size();
+    avgWT = avgWT / processes.size();
+    avgRT = avgRT / processes.size();
+    avgTAT = avgTAT / processes.size();
+    cout << "Average Completion Time: " << avgCT << endl;
+    cout << "Average Waiting Time: " << avgWT << endl;
+    cout << "Average Response Time: " << avgRT << endl;
+    cout << "Average Turn Around Time: " << avgTAT << endl;
     cout << "\n\n" << endl;
 }
 
@@ -56,4 +78,32 @@ bool FCFS::isEmpty(){
 
 int FCFS::getAt(){
     return processes[i].getArrivalTime();
+}
+
+vector<float> FCFS::getAvg(){
+    float avgCT = 0.0, avgWT = 0.0, avgRT = 0.0, avgTAT = 0.0;
+    for (Process& p : processes){
+        avgCT += p.getCompletionTime();
+        avgWT += p.getWaitTime();
+        avgRT += p.getResponseTime();
+        avgTAT += p.getTurnAroundTime();
+    }
+    cout << endl;
+    avgCT = avgCT / processes.size();
+    avgWT = avgWT / processes.size();
+    avgRT = avgRT / processes.size();
+    avgTAT = avgTAT / processes.size();
+    vector<float> avg = {avgCT, avgWT, avgRT, avgTAT};
+    return avg;
+}
+
+void FCFS::addProcess(Process p){
+    processes.push_back(p);
+}
+void FCFS::deleteProcess(){
+    processes.erase(processes.begin() + i);
+}
+
+bool FCFS::getType(){
+    return false;
 }
